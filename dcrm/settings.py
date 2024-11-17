@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -89,8 +90,14 @@ DATABASES = {
     }
 }
 database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
-
+#DATABASES["default"] = dj_database_url.parse("postgresql://ass3_django_render_czgi_user:xFqyPPkL75dV7Cmrqcx7AhTN9CpKhjQ9@dpg-cssvpa56l47c73egqt60-a.oregon-postgres.render.com/ass3_django_render_czgi")
+DATABASES["default"] = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase', # This is where you put the name of the db file.
+                 # If one doesn't exist, it will be created at migration time.
+    }
+}
 
 
 
