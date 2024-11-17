@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    User_list
+{% endblock %}
+{% load table_tags %}
+{% block content %}
+<section>
+    <h1> <a href="{% url 'new_u' Model %}">Create New {{Model}}</a> </h1>
+    <div class="container">
+<h1 class="text-center mt-3 mb-3">Prim Keys</h1>
+<table class="table table-dark table-bordered">
+   <thead>
+     <tr>
+            <th scope="col">Email</th>
+     </tr>
+   </thead>
+   <tbody>
+   {% for i in objs %}
+     <tr>
+            <td>{{i.u_email}}</td>
+       <td>
+           <button class="btn"><a href="{% url 'show_one' Model i.u_email %}">Details</a></button>&nbsp;&nbsp;
+           <button class="btn btn-warning"><a href="{% url 'update_u' Model i.u_email %}">Update</a></button>&nbsp;&nbsp;
+           <button class="btn btn-danger"><a href="{% url 'erase_u' Model i.u_email %}">Erase</a></button>
+       </td>
+     </tr>
+   {% endfor %}
+   </tbody>
+ </table>
+</div>
+
+</section>
+    {% endblock %}

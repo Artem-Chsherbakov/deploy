@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Update User Now!
+{% endblock %}
+
+{% block content %}
+<section>
+
+    <div class="container">
+<h1 class="text-center mt-3 mb-3">Details:</h1>
+<table class="table table-dark table-bordered">
+   <thead>
+     <tr>
+            {%for v in verbn%}
+            <th scope="col">{{v}}</th>
+            {%endfor%}
+     </tr>
+   </thead>
+   <tbody>
+
+     <tr>
+         {% for i in obj %}
+            <td>{{i}}</td>
+         {% endfor %}
+     </tr>
+
+   </tbody>
+ </table>
+</div>
+    <h1> <a href="{% url 'list_u' Model %}">Get Back</a> </h1>
+</section>
+
+{% endblock %}

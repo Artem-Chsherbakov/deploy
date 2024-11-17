@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    User_list
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Our Doctors</h1>
+    {% for user in users %}
+        <article>
+            <h2>
+                {{ user.nome }}
+                {{ user.cognome }}
+            </h2>
+            <p>
+                Mobile Phone : {{ user.phone }}
+            </p>
+            <p>
+                Degree : {{ user.degree }}
+            </p>
+        </article>
+    {% endfor %}
+</section>
+    {% endblock %}
+

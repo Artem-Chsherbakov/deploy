@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    User_list
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1> <a href="{% url 'new_user' %}">Create New User</a> </h1>
+    <div class = "container">
+        <h1 class="text-center mt-3 mb-3">Our Users</h1>
+        <table class="table table-dark table-bordered">
+            <thread>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Country</th>
+                </tr>
+            </thread>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{user.u_name}}</td>
+                        <td>{{user.u_surname}}</td>
+                        <td>{{user.u_email}}</td>
+                        <td>{{user.u_phone}}</td>
+                        <td>{{  user.u_cname.c_cname}}</td>
+                        <td>
+                            <button class="btn btn-warning"><a href="{% url 'update_user' user.u_email %}">Update</a></button>&nbsp;&nbsp;
+                            <button class="btn btn-warning"><a href="{% url 'erase_user' user.u_email %}">Delete</a></button>
+                        </td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+    {% endblock %}
